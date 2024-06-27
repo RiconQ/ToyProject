@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/1.Scene/KimGhHun/UI Test.unity
+    guid: aa66a7f90e5a52141800e75a7213a064
   m_configObjects: {}
