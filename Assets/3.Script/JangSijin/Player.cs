@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public Animator anim; // Animator 컴포넌트 참조를 위한 변수
     private Rigidbody rb; // Rigidbody 컴포넌트 참조를 위한 변수        
     private bool isJumping = false; // 점프 중인지 여부를 나타내는 변수
+    private bool isSlide = false;
 
     void Start()
     {
@@ -32,11 +33,7 @@ public class Player : MonoBehaviour
 
         UpdateMovePlayer();
 
-        //if (!isJumping && IsGrounded())
-        //{
-        //    // 땅에 있고 점프 중이 아니면 Run 애니메이션을 출력
-        //    anim.SetTrigger("Run");
-        //}
+
         
         if (Input.GetKeyDown(KeyCode.Space)/* && !isJumping && IsGrounded()*/)
         {
@@ -46,6 +43,15 @@ public class Player : MonoBehaviour
             // 플레이어의 y축 높이를 jumpHeight 만큼 증가
             Vector3 jumpVector = new Vector3(0f, jumpHeight, 0f);
              rb.AddForce(jumpVector, ForceMode.Impulse);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            isSlide = true;
+
+            anim.SetTrigger("Slide"); // 슬라이드 애니메이션을 재생
+            // 작업 내용 추가중
+            // 슬라이드 판정 설정 필요
         }
     }
 
