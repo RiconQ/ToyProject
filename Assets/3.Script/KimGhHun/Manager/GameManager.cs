@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string playScene;
     [SerializeField] private int score = 0;
     [SerializeField] private Player player;
+    public ScoreCanvas scoreCanvas;
 
     public void SelectCharacter(int index)
     {
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
         if (player.isLive)
         {
             score += 1;
+            scoreCanvas.UpdateCurrentScore(score);
             //점수 업데이트
         }
     }
@@ -61,5 +63,13 @@ public class GameManager : MonoBehaviour
         // 게임 오버 화면 출력
         // 현재 점수 비교
         //      점수 갱신시 저장
+        player.transform.GetComponent<CapsuleCollider>().isTrigger = true;
+        int bestScore = DataManager.instance.scoreData.score;
+        if(bestScore < score)
+        {
+
+            DataManager.instance.scoreData.score = score;
+            DataManager.instance.SaveScore();
+        }
     }
 }

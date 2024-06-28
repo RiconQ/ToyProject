@@ -158,7 +158,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3551214281182199890}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8171005274316531850
 Animator:
   serializedVersion: 3
@@ -12715,7 +12715,7 @@ GameObject:
   - component: {fileID: 8024241719826376886}
   - component: {fileID: -6268368601996143850}
   m_Layer: 4
-  m_Name: Spin 1
+  m_Name: Spin 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12729,7 +12729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8666984267607400644}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 762581209242077482}
@@ -12858,7 +12858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
-  direction: {x: 0, y: 0, z: -10}
+  direction: {x: 0, y: 10, z: 0}
 --- !u!1 &8684004773342620075
 GameObject:
   m_ObjectHideFlags: 0
