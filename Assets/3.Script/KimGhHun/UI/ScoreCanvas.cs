@@ -9,9 +9,9 @@ public class ScoreCanvas : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentScoreText;
 
 
-    private void Start()
+    public void ShowBestScore()
     {
-        GameManager.instance.scoreCanvas = this;
+        DataManager.instance.LoadScore();
         bestScoreText.text = DataManager.instance.scoreData.score.ToString();
     }
 

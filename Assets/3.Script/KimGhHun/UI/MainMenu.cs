@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
 
     [Header("CharacterSelect")]
     [SerializeField] private GameObject characterSelectPanel;
-    [SerializeField] private GameObject characterModel;
+    //[SerializeField] private GameObject characterModel;
     [SerializeField] private Button closeCharacterSelect;
     
 
@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
         settingFramePanel.SetActive(false);
         bestScorePanel.SetActive(false);
         characterSelectPanel.SetActive(false);
-        characterModel.SetActive(false);
+        //characterModel.SetActive(false);
 
         UpdateBestScore();
         SetEvent();
@@ -50,6 +50,7 @@ public class MainMenu : MonoBehaviour
 
     private void UpdateBestScore()
     {
+        DataManager.instance.LoadScore();
         bestScoreText.text = DataManager.instance.scoreData.score.ToString();
     }
 
@@ -57,7 +58,7 @@ public class MainMenu : MonoBehaviour
     {
         SoundManager.instance.PlaySFX(0);
         characterSelectPanel.SetActive(!characterSelectPanel.activeSelf);
-        characterModel.SetActive(!characterModel.activeSelf);
+        //characterModel.SetActive(characterSelectPanel.activeSelf);
     }
 
     public void ToggleSetting()
@@ -81,6 +82,7 @@ public class MainMenu : MonoBehaviour
 
     public void ToggleBestScore()
     {
+        UpdateBestScore();
         SoundManager.instance.PlaySFX(0);
         bestScorePanel.SetActive(!bestScorePanel.activeSelf);
     }
