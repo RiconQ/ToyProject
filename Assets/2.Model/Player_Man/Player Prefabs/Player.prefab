@@ -2415,7 +2415,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   capsuleCollider: {fileID: 0}
   SkillValue: 2
-  SelectPlayerType: 0
+  SelectPlayerType: 2
   SkillSprites:
   - {fileID: 21300000, guid: 764805385a3269046a1a8d4ad316972d, type: 3}
   - {fileID: 21300000, guid: 701aa29b454fdff448951fd2d35b2069, type: 3}
@@ -2424,6 +2424,7 @@ MonoBehaviour:
   - {fileID: 4561493086342616211}
   - {fileID: 7080262281444043933}
   - {fileID: 916614635428769975}
+  spawner: {fileID: 0}
 --- !u!54 &6450977926655912552
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3960,7 +3961,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4534153825327543189, guid: 5cc6f595d239374479df7c4c3d65e63c, type: 3}
       propertyPath: lengthInSec
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4534153826127650355, guid: 5cc6f595d239374479df7c4c3d65e63c, type: 3}
       propertyPath: m_Name
@@ -3972,7 +3973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534153826127650357, guid: 5cc6f595d239374479df7c4c3d65e63c, type: 3}
       propertyPath: lengthInSec
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4534153826127650358, guid: 5cc6f595d239374479df7c4c3d65e63c, type: 3}
       propertyPath: m_RootOrder
@@ -4020,11 +4021,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534153826376163226, guid: 5cc6f595d239374479df7c4c3d65e63c, type: 3}
       propertyPath: lengthInSec
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4534153827044394245, guid: 5cc6f595d239374479df7c4c3d65e63c, type: 3}
       propertyPath: lengthInSec
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cc6f595d239374479df7c4c3d65e63c, type: 3}

@@ -327,13 +327,17 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        // 맵(도로) 풀링
+        if(spawner != null)
+        {
+        spawner.SpawnTriggerEntered();
+        }
+
         // Water Layer에 충돌했을 때 처리
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             ChangeState(new DeadState(this)); // 죽는 상태로 전환
-        }
-        spawner.SpawnTriggerEntered();
-
+        }       
     }
 
     // 점프 쿨타임 시작
@@ -383,9 +387,25 @@ public class Player : MonoBehaviour
     private void ResetSkillDuration()
     {
         particleSystems.ToList().ForEach(ps => ps.Stop());
-        anim.SetFloat("SkillSpeed", 1.0f);
-        forwardSpeed /= SkillValue;
-        lateralSpeed /= SkillValue;
+
+        switch (SelectPlayerType)
+        {
+            case PlayerType.FastMan:
+                // 이동 속도 증가 초기화
+                anim.SetFloat("SkillSpeed", 1.0f);
+                forwardSpeed /= SkillValue;
+                lateralSpeed /= SkillValue;
+                break;
+            case PlayerType.ShildMan:
+                // 무적 상태 초기화
+                // 게임 매니저에서 장애물 모든 오브젝트 콜라이더 활성화                
+                break;
+            case PlayerType.ZeroGravityMan:
+                // 무중력 상태 초기화
+                rb.mass = 1f;
+                anim.SetFloat("SkillGravityValue", 1f);
+                break;
+        }
     }
 
     // 점프 가능 여부 확인
@@ -463,10 +483,24 @@ public class Player : MonoBehaviour
             // 스킬 이펙트 활성화           
             particleSystems.ToList().ForEach(ps => ps.Play());
 
-            // 이동 속도 증가
-            anim.SetFloat("SkillSpeed", SkillValue);
-            forwardSpeed *= SkillValue;
-            lateralSpeed *= SkillValue;
+            switch (SelectPlayerType)
+            {
+                case PlayerType.FastMan:
+                    // 이동 속도 증가
+                    anim.SetFloat("SkillSpeed", SkillValue);
+                    forwardSpeed *= SkillValue;
+                    lateralSpeed *= SkillValue;
+                    break;
+                case PlayerType.ShildMan:
+                    // 무적 상태
+                    // 게임 매니저에서 장애물 모든 오브젝트 콜라이더 비활성화
+                    break;
+                case PlayerType.ZeroGravityMan:
+                    // 무중력 상태
+                    rb.mass = 0.26f;
+                    anim.SetFloat("SkillGravityValue", 0.25f);
+                    break;
+            }
 
             // 예시로 스킬 쿨타임 시작 메서드 호출
             StartSkillCooldown();
