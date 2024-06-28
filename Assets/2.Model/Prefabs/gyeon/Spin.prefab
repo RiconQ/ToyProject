@@ -12290,8 +12290,9 @@ GameObject:
   - component: {fileID: 8666984267607400645}
   - component: {fileID: 8666984267607400642}
   - component: {fileID: 8024241719826376886}
+  - component: {fileID: -6268368601996143850}
   m_Layer: 4
-  m_Name: jump
+  m_Name: Spin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12305,7 +12306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8666984267607400644}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 762581209242077482}
@@ -12423,6 +12424,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage_data: {fileID: 11400000, guid: f90d96658db726e478133c64758fcd86, type: 2}
   Spawner: {fileID: 0}
+--- !u!114 &-6268368601996143850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666984267607400644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759a6333d2b0614479b818772370db36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 10
+  direction: {x: 0, y: 0, z: 5}
 --- !u!1 &8883348051385859328
 GameObject:
   m_ObjectHideFlags: 0

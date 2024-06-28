@@ -43,7 +43,7 @@ public class Ob_Spawner : MonoBehaviour
             if (!enemy.activeSelf)
                 enemy.SetActive(true);
             GameManager.instance.AddScore();
-            StartCoroutine(DisableAfterTime(enemy, 1f)); // 10초 후 비활성화
+            StartCoroutine(DisableAfterTime(enemy, 20f)); // 10초 후 비활성화
         }
     }
 
