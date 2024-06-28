@@ -88,7 +88,7 @@ public class JumpState : PlayerState
 // Slide 상태 클래스
 public class SlideState : PlayerState
 {
-    private float slideDuration = 1.0f; // 슬라이드 지속 시간
+    private float slideDuration = 1.6f; // 슬라이드 지속 시간
     private float slideTimer;
 
     public SlideState(Player player) : base(player) { }
@@ -97,13 +97,17 @@ public class SlideState : PlayerState
     {
         if (player.IsGrounded())
         {
+            // 슬라이딩 시작 시 콜라이더의 높이를 줄이고 중심을 변경
+            player.capsuleCollider.height = player.SlideColliderHeight;
+            player.capsuleCollider.center = player.SlideColliderCenter;
+
             player.anim.SetTrigger("Slide");
             player.rb.velocity = Vector3.zero; // 이동 중지
             slideTimer = slideDuration;
-            player.StartSlideCooldown(); // 슬라이드 쿨타임 시작
+            player.StartSlideCooldown(); // 슬라이드 쿨타임 시작                        
         }
         else
-        {
+        {           
             // 만약 땅에 있지 않으면 Run 상태로 전환
             player.ChangeState(new RunState(player));
         }
@@ -117,6 +121,10 @@ public class SlideState : PlayerState
 
         if (slideTimer <= 0)
         {
+            // 슬라이딩 정료 시 콜라이더의 높이와 중심을 기본 설정 값으로 초기화
+            player.capsuleCollider.height = player.OriginColliderHeight;
+            player.capsuleCollider.center = player.OriginColliderCenter;
+
             player.ChangeState(new RunState(player));
         }
     }
@@ -154,6 +162,10 @@ public class DeadState : PlayerState
 public class Player : MonoBehaviour
 {
     public Transform groundCheck; // 땅 체크를 위한 위치
+    [HideInInspector] public Vector3 OriginColliderCenter = new Vector3(0f, 1f, 0f);
+    [HideInInspector] public float OriginColliderHeight = 2f;
+    [HideInInspector] public Vector3 SlideColliderCenter = new Vector3(0f, 0.5f, 0f);
+    [HideInInspector] public float SlideColliderHeight = 0.5f;
 
     public Image jumpCooldownImage; // 점프 쿨타임 UI 이미지
     public Image slideCooldownImage; // 슬라이드 쿨타임 UI 이미지
@@ -173,6 +185,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isJumping = false; // 점프 중인지 여부    
     [HideInInspector] public Animator anim; // Animator 컴포넌트 참조를 위한 변수
     [HideInInspector] public Rigidbody rb; // Rigidbody 컴포넌트 참조를 위한 변수
+    [HideInInspector] public CapsuleCollider capsuleCollider; // Rigidbody 컴포넌트 참조를 위한 변수
 
     private PlayerState currentState; // 플레이어 행동 상태
     private bool canJump = true; // 점프 가능 여부
@@ -185,6 +198,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 할당
         anim = GetComponent<Animator>(); // Animator 컴포넌트 할당
+        capsuleCollider = GetComponent<CapsuleCollider>(); // CapsuleCollider 컴포넌트 할당
+
         ChangeState(new RunState(this)); // 초기 상태를 Run으로 설정
     }
 
@@ -226,6 +241,9 @@ public class Player : MonoBehaviour
 
     public void UpdatePlayerInputHorizontalMove()
     {
+        if (!isLive)
+            return;
+
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * lateralSpeed * Time.deltaTime);
     }

@@ -646,6 +646,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2517556760272174092, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5966612626560938196, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -703,9 +707,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 572162716}
     - target: {fileID: 6450977926655912559, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
+      propertyPath: SlideColliderHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450977926655912559, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
       propertyPath: jumpCooldownTextMesh
       value: 
       objectReference: {fileID: 92312906}
+    - target: {fileID: 6450977926655912559, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
+      propertyPath: SlideColliderCenter.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6450977926655912559, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
       propertyPath: slideCooldownTextMesh
       value: 
