@@ -1,4 +1,5 @@
 // 플레이어 상태를 정의하는 추상 클래스
+using System.ComponentModel;
 using UnityEngine;
 
 public abstract class PlayerState
@@ -39,12 +40,7 @@ public class RunState : PlayerState
         else if (Input.GetButtonDown("Slide") && player.IsGrounded())
         {
             player.ChangeState(new SlideState(player));
-        }
-        // 죽음 상태로 전환
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            player.ChangeState(new DeadState(player));
-        }
+        }        
     }
 
     public override void Exit()
@@ -135,11 +131,14 @@ public class DeadState : PlayerState
 
     public override void Enter()
     {
+        player.isLive = false;
         player.anim.SetTrigger("Dead");
+        // 여기에 죽는 애니메이션 실행 코드를 추가할 수 있습니다.        
     }
 
     public override void Update()
     {
+        // 상태가 업데이트되는 동안 추가 작업이 필요한 경우 처리
     }
 
     public override void Exit()
@@ -157,7 +156,8 @@ public class Player : MonoBehaviour
     public float jumpHeight = 10f; // 점프 높이 조절을 위한 변수
     public float groundCheckRadius = 0.1f; // 땅 체크를 위한 구의 반지름    
 
-    [HideInInspector] public bool isJumping = false; // 점프 중인지 여부
+    [HideInInspector] public bool isLive = true; // 플레이어가 살아있는지 확인을 위한 변수
+    [HideInInspector] public bool isJumping = false; // 점프 중인지 여부    
     [HideInInspector] public Animator anim; // Animator 컴포넌트 참조를 위한 변수
     [HideInInspector] public Rigidbody rb; // Rigidbody 컴포넌트 참조를 위한 변수
     private PlayerState currentState; // 플레이어 행동 상태
@@ -178,8 +178,11 @@ public class Player : MonoBehaviour
 
     private void DefaultMove()
     {
-        // 캐릭터는 계속 앞으로 이동한다.
-        transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
+        if (isLive)
+        {
+            // 캐릭터는 계속 앞으로 이동한다.
+            transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
+        }
 
         // 좌우 이동 처리
         if (currentState.GetType() != typeof(JumpState) && currentState.GetType() != typeof(SlideState))
@@ -209,5 +212,14 @@ public class Player : MonoBehaviour
     {
         // 플레이어가 땅에 닿았는지 여부를 체크
         return Physics.CheckSphere(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Ground"));
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        // Water Layer에 충돌했을 때 처리
+        if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            ChangeState(new DeadState(this)); // 죽는 상태로 전환
+        }
     }
 }
