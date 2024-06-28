@@ -20,6 +20,12 @@ public class Ob_Spawner : MonoBehaviour
         {
             int rand = Random.Range(0, ObPrefabs.Length);
             GameObject enemy = Instantiate(ObPrefabs[rand], ObPrefabs[rand].transform.position, ObPrefabs[rand].transform.rotation);
+            //enemy.GetComponent<Ob_Control>()
+            foreach (var item in enemy.GetComponents<BoxCollider>())
+            {
+                GameManager.instance.obstacleColliders.Add(item);
+
+            }
             enemy.SetActive(false);
             Enemy_Q.Enqueue(enemy);
         }
@@ -38,13 +44,13 @@ public class Ob_Spawner : MonoBehaviour
         {
             GameObject enemy = Enemy_Q.Dequeue();
             //Vector3 initialPosition = enemy.transform.position;
-            // position.y = initialPosition.y; // ÇÁ¸®ÆÕÀÇ ÃÊ±â y °ªÀ» À¯Áö
+            // position.y = initialPosition.y; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ y ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Vector3 position = new Vector3(0, enemy.transform.position.y, transform.position.z);
             enemy.transform.position = position;
             if (!enemy.activeSelf)
                 enemy.SetActive(true);
             GameManager.instance.AddScore();
-            StartCoroutine(DisableAfterTime(enemy, 20f)); // 10ÃÊ ÈÄ ºñÈ°¼ºÈ­
+            StartCoroutine(DisableAfterTime(enemy, 20f)); // 10ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
         }
     }
 

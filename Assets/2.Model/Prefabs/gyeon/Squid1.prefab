@@ -3162,7 +3162,7 @@ GameObject:
   - component: {fileID: 3373397088822163986}
   - component: {fileID: 3373397088822163989}
   - component: {fileID: 3373397088822163990}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Squid1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

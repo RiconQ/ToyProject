@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
         Debug.Log($"선택된 캐릭터 : {index}");
         classIndex = index;
         // 캐릭터 데이터 할당
+        
+
         SceneManager.LoadScene(playScene);
         StartGameTimer();
         SoundManager.instance.PlayMusic(1);
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         // 플레이어 스킬 설정 -> Index에 따라서
+        player.SelectPlayerType = (Player.PlayerType)classIndex;
     }
     public void StartGameTimer()
     {
@@ -145,6 +148,9 @@ public class GameManager : MonoBehaviour
 
     public void SetObstacleCollider(bool value)
     {
-        
+        foreach(var item in obstacleColliders)
+        {
+            item.enabled = value;
+        }
     }
 }

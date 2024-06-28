@@ -1467,7 +1467,7 @@ GameObject:
   - component: {fileID: 8441206393191188052}
   - component: {fileID: 8441206393191188051}
   - component: {fileID: 8441206393191188050}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Squid3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
