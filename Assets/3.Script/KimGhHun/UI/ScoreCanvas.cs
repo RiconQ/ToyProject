@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScoreCanvas : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TextMeshProUGUI bestScoreText;
+    [SerializeField] private TextMeshProUGUI currentScoreText;
+
+
+    private void Start()
     {
-        
+        GameManager.instance.scoreCanvas = this;
+        bestScoreText.text = DataManager.instance.scoreData.score.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateCurrentScore(int score)
     {
-        
+        currentScoreText.text = score.ToString();
     }
 }
