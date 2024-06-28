@@ -27,6 +27,7 @@ public class Ob_Spawner : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.StartGameTimer();
         StartCoroutine(SpawnEnemy_co());
     }
 

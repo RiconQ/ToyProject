@@ -26,28 +26,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private bool isGameStart = false;
 
     [SerializeField] private string playScene;
     [SerializeField] private int score = 0;
+    [SerializeField] private Player player;
 
     public void SelectCharacter(int index)
     {
         Debug.Log($"선택된 캐릭터 : {index}");
         // 캐릭터 데이터 할당
         SceneManager.LoadScene(playScene);
-        StartGameTimer();
+        //StartGameTimer();
         SoundManager.instance.PlayMusic(1);
     }
 
     public void StartGameTimer()
     {
-        isGameStart = true;
+        //player 참조
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     public void AddScore()
     {
-        if (isGameStart)
+        
+        if (player.isLive)
+        {
             score += 1;
+            //점수 업데이트
+        }
+    }
+
+    public void OnDead()
+    {
+        // 게임 오버 화면 출력
+        // 현재 점수 비교
+        //      점수 갱신시 저장
     }
 }
