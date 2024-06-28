@@ -8,6 +8,7 @@ public class RoadSpawner : MonoBehaviour
     public List<GameObject> roads;
     private float offset = 100f;
 
+
     private void Start()
     {
         if(roads != null && roads.Count > 0)
@@ -28,5 +29,12 @@ public class RoadSpawner : MonoBehaviour
         float newZ = roads[roads.Count - 1].transform.position.z + offset;
         moveRoad.transform.position = new Vector3(0, 0, newZ);
         roads.Add(moveRoad);
+
+        DecoSpawner[] decoSpawners = moveRoad.GetComponentsInChildren<DecoSpawner>();
+        
+        foreach(DecoSpawner decoSpawner in decoSpawners)
+        {
+            decoSpawner.SpawnDecos();
+        }
     }
 }
