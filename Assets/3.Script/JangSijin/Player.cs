@@ -322,7 +322,8 @@ public class Player : MonoBehaviour
     {
         canUseSkill = false;
         skillCooldownEndTime = Time.time + skillCooldownTime;
-        Invoke(nameof(ResetSkillCooldown), skillDurationTime);
+        Invoke(nameof(ResetSkillDuration), skillDurationTime); // 스킬 지속 시간 리셋
+        Invoke(nameof(ResetSkillCooldown), skillCooldownTime); // 스킬 쿨타임 리셋
     }
 
     // 점프 쿨타임 리셋
@@ -335,12 +336,17 @@ public class Player : MonoBehaviour
     private void ResetSlideCooldown()
     {
         canSlide = true;
-    }
+    }    
 
     // 스킬 쿨타임 리셋
     private void ResetSkillCooldown()
     {
         canUseSkill = true;        
+    }
+
+    // 스킬 지속시간 리셋
+    private void ResetSkillDuration()
+    {
         particleSystems.ToList().ForEach(ps => ps.Stop());
         anim.SetFloat("SkillSpeed", 1.0f);
         forwardSpeed /= SkillValue;
