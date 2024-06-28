@@ -9885,6 +9885,9 @@ MonoBehaviour:
   mainMenuBGM: {fileID: 8300000, guid: 2346619ac43a9104dacd7f7dcba26bbb, type: 3}
   inGameBGM: {fileID: 8300000, guid: 5f18809f5955ff240bf52db384980841, type: 3}
   buttonClick: {fileID: 8300000, guid: dbd4360f70ec4c146bfdeb1c6c12a8e2, type: 3}
+  deathSfx: {fileID: 8300000, guid: 0b34c7f2d58401e42ad6e1280c6cc567, type: 3}
+  jumpSfx: {fileID: 8300000, guid: 986deb8cdad5c9b42aa139642020eee9, type: 3}
+  skillSfx: {fileID: 8300000, guid: d4483383f1b321f44a7a480659e495f4, type: 3}
 --- !u!4 &1574208355
 Transform:
   m_ObjectHideFlags: 0

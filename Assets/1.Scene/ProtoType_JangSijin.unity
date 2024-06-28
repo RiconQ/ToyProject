@@ -1568,38 +1568,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 552312096013039282, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
-      propertyPath: lengthInSec
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 552312096013039282, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 2153489293523888697, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
-      propertyPath: lengthInSec
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3334707223218153289, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
-      propertyPath: lengthInSec
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3368600495839867244, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
-      propertyPath: lengthInSec
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405303328762207689, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405303328762207691, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
-      propertyPath: lengthInSec
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603379940071160411, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
-      propertyPath: lengthInSec
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5966612626560938196, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1665,6 +1633,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 92312906}
     - target: {fileID: 6450977926655912559, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
+      propertyPath: skillCooldownBGImage
+      value: 
+      objectReference: {fileID: 256770040}
+    - target: {fileID: 6450977926655912559, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
       propertyPath: skillCooldownTextMesh
       value: 
       objectReference: {fileID: 966052749}
@@ -1672,13 +1644,5 @@ PrefabInstance:
       propertyPath: slideCooldownTextMesh
       value: 
       objectReference: {fileID: 1058519094}
-    - target: {fileID: 9003964060924135884, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
-      propertyPath: lengthInSec
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9003964060924135884, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}
-      propertyPath: simulationSpeed
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db96fa4e2a5373442b6ebefa17aa7665, type: 3}

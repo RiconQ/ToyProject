@@ -192,6 +192,7 @@ public class Player : MonoBehaviour
 
     public Image jumpCooldownImage; // 점프 쿨타임 UI 이미지
     public Image slideCooldownImage; // 슬라이드 쿨타임 UI 이미지
+    public Image skillCooldownBGImage; // 스킬 쿨타임 백그라운드 UI 이미지
     public Image skillCooldownImage; // 스킬 쿨타임 UI 이미지
 
     public TextMeshProUGUI jumpCooldownTextMesh; // 점프 쿨타임 UI 텍스트
@@ -206,6 +207,8 @@ public class Player : MonoBehaviour
     public float jumpCooldownTime = 2.0f; // 점프 쿨타임 시간
     public float slideCooldownTime = 2.0f; // 슬라이드 쿨타임 시간
     public float skillCooldownTime = 10.0f; // 스킬 쿨타임 시간
+
+    public float skillDurationTime = 5.0f; // 스킬 지속 시간
 
     [HideInInspector] public bool isLive = true; // 플레이어가 살아있는지 확인을 위한 변수
     [HideInInspector] public bool isJumping = false; // 점프 중인지 여부    
@@ -224,13 +227,45 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public float SkillValue = 2.0f;
 
+    public enum PlayerType
+    {
+        FastMan,
+        ShildMan,
+        ZeroGravityMan,
+        MaxType
+    }
+
+    public PlayerType SelectPlayerType = PlayerType.FastMan;
+
+    // 직업별 스킬 이미지
+    public Sprite[] SkillSprites = new Sprite[(int)PlayerType.MaxType];
+
+    // 직업별 스킬 파티클
+    public GameObject[] SkillParticles = new GameObject[(int)PlayerType.MaxType];
+
+    [SerializeField] public RoadSpawner spawner;
+
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 할당
         anim = GetComponent<Animator>(); // Animator 컴포넌트 할당
         capsuleCollider = GetComponent<CapsuleCollider>(); // CapsuleCollider 컴포넌트 할당               
-        particleSystems = GetComponentsInChildren<ParticleSystem>(); // 스킬 파티클들을 할당
-        particleSystems.ToList().ForEach(ps => ps.Stop()); // LINQ를 사용하여 간단하게 모든 파티클 시스템을 중지하기
+
+        // 직업별 스킬 파티클 초기 세팅
+        particleSystems = SkillParticles[(int)SelectPlayerType].gameObject.GetComponentsInChildren<ParticleSystem>(); // 스킬 파티클들을 할당
+
+        // SkillParticles 배열에 있는 모든 파티클 시스템을 중지 // Linq
+        SkillParticles
+            .Where(sp => sp != null) // null 체크
+            .SelectMany(sp => sp.GetComponentsInChildren<ParticleSystem>())
+            .ToList()
+            .ForEach(ps => ps.Stop());
+
+        // 직업별 스킬 UI 이미지 세팅
+        skillCooldownBGImage.sprite = SkillSprites[(int)SelectPlayerType];
+        skillCooldownImage.sprite = SkillSprites[(int)SelectPlayerType];
 
         ChangeState(new RunState(this)); // 초기 상태를 Run으로 설정
     }
@@ -292,11 +327,17 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        // 맵(도로) 풀링
+        if(spawner != null)
+        {
+        spawner.SpawnTriggerEntered();
+        }
+
         // Water Layer에 충돌했을 때 처리
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             ChangeState(new DeadState(this)); // 죽는 상태로 전환
-        }
+        }       
     }
 
     // 점프 쿨타임 시작
@@ -320,7 +361,8 @@ public class Player : MonoBehaviour
     {
         canUseSkill = false;
         skillCooldownEndTime = Time.time + skillCooldownTime;
-        Invoke(nameof(ResetSkillCooldown), skillCooldownTime);
+        Invoke(nameof(ResetSkillDuration), skillDurationTime); // 스킬 지속 시간 리셋
+        Invoke(nameof(ResetSkillCooldown), skillCooldownTime); // 스킬 쿨타임 리셋
     }
 
     // 점프 쿨타임 리셋
@@ -338,11 +380,32 @@ public class Player : MonoBehaviour
     // 스킬 쿨타임 리셋
     private void ResetSkillCooldown()
     {
-        canUseSkill = true;        
+        canUseSkill = true;
+    }
+
+    // 스킬 지속시간 리셋
+    private void ResetSkillDuration()
+    {
         particleSystems.ToList().ForEach(ps => ps.Stop());
-        anim.SetFloat("SkillSpeed", 1.0f);
-        forwardSpeed /= SkillValue;
-        lateralSpeed /= SkillValue;
+
+        switch (SelectPlayerType)
+        {
+            case PlayerType.FastMan:
+                // 이동 속도 증가 초기화
+                anim.SetFloat("SkillSpeed", 1.0f);
+                forwardSpeed /= SkillValue;
+                lateralSpeed /= SkillValue;
+                break;
+            case PlayerType.ShildMan:
+                // 무적 상태 초기화
+                // 게임 매니저에서 장애물 모든 오브젝트 콜라이더 활성화                
+                break;
+            case PlayerType.ZeroGravityMan:
+                // 무중력 상태 초기화
+                rb.mass = 1f;
+                anim.SetFloat("SkillGravityValue", 1f);
+                break;
+        }
     }
 
     // 점프 가능 여부 확인
@@ -420,10 +483,24 @@ public class Player : MonoBehaviour
             // 스킬 이펙트 활성화           
             particleSystems.ToList().ForEach(ps => ps.Play());
 
-            // 이동 속도 증가
-            anim.SetFloat("SkillSpeed", 2.0f);            
-            forwardSpeed *= SkillValue;
-            lateralSpeed *= SkillValue;
+            switch (SelectPlayerType)
+            {
+                case PlayerType.FastMan:
+                    // 이동 속도 증가
+                    anim.SetFloat("SkillSpeed", SkillValue);
+                    forwardSpeed *= SkillValue;
+                    lateralSpeed *= SkillValue;
+                    break;
+                case PlayerType.ShildMan:
+                    // 무적 상태
+                    // 게임 매니저에서 장애물 모든 오브젝트 콜라이더 비활성화
+                    break;
+                case PlayerType.ZeroGravityMan:
+                    // 무중력 상태
+                    rb.mass = 0.26f;
+                    anim.SetFloat("SkillGravityValue", 0.25f);
+                    break;
+            }
 
             // 예시로 스킬 쿨타임 시작 메서드 호출
             StartSkillCooldown();
