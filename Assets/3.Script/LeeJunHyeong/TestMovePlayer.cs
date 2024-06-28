@@ -19,6 +19,8 @@ public class TestMovePlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //if(other.CompareTag("MapSpawnTrigger"))
+        Debug.Log("ºÎ‹HÈû");
         spawner.SpawnTriggerEntered();
     }
 }
