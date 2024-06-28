@@ -199,7 +199,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI slideCooldownTextMesh; // 슬라이드 쿨타임 UI 텍스트
     public TextMeshProUGUI skillCooldownTextMesh; // 스킬 쿨타임 UI 텍스트
 
-    public float forwardSpeed = 5.0f;   // 캐릭터의 앞으로 이동 속도
+    public float forwardSpeed = 20.0f;   // 캐릭터의 앞으로 이동 속도
     public float lateralSpeed = 5.0f;   // 캐릭터의 좌우 이동 속도
     public float jumpHeight = 10f; // 점프 높이 조절을 위한 변수
     public float groundCheckRadius = 0.1f; // 땅 체크를 위한 구의 반지름    
@@ -324,20 +324,28 @@ public class Player : MonoBehaviour
         // 플레이어가 땅에 닿았는지 여부를 체크
         return Physics.CheckSphere(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Ground"));
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        // 맵(도로) 풀링
+        if (spawner != null)
+        {
+            if (other.gameObject.CompareTag("MapSpawnTrigger"))
+            {
+                Debug.Log("맵 풀링");
+                spawner.SpawnTriggerEntered();
+            }
+        }
+    }
 
     void OnCollisionEnter(Collision other)
     {
-        // 맵(도로) 풀링
-        if(spawner != null)
-        {
-        spawner.SpawnTriggerEntered();
-        }
+        
 
         // Water Layer에 충돌했을 때 처리
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             ChangeState(new DeadState(this)); // 죽는 상태로 전환
-        }       
+        }
     }
 
     // 점프 쿨타임 시작
