@@ -82,8 +82,10 @@ public class GameManager : MonoBehaviour
             if (!player.isLive)
             {
                 if (!gameOverCanvas.activeSelf)
+                {
                     gameOverCanvas.SetActive(true);
-                OnDead();
+                    OnDead();
+                }
             }
             else
             {
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
         // 현재 점수 비교
         //      점수 갱신시 저장
         //player.transform.GetComponent<CapsuleCollider>().isTrigger = true;
+        SoundManager.instance.PlaySFX(1);
         int bestScore = DataManager.instance.scoreData.score;
         if (bestScore < score)
         {
@@ -130,5 +133,6 @@ public class GameManager : MonoBehaviour
         MainMenuCanvasObject.SetActive(true);
         helpWindow.SetActive(false);
         selectWindow.SetActive(false);
+        SoundManager.instance.PlayMusic(0);
     }
 }
