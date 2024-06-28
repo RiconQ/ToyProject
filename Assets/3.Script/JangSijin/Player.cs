@@ -1,6 +1,7 @@
-// 플레이어 상태를 정의하는 추상 클래스
-using System.ComponentModel;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.UI; // UI 사용을 위해 추가
 
 public abstract class PlayerState
 {
@@ -16,7 +17,6 @@ public abstract class PlayerState
     public abstract void Exit();
 }
 
-// Run 상태 클래스
 public class RunState : PlayerState
 {
     public RunState(Player player) : base(player) { }
@@ -32,15 +32,15 @@ public class RunState : PlayerState
         player.UpdatePlayerInputHorizontalMove();
 
         // 점프 입력을 받으면 점프 상태로 전환
-        if (Input.GetButtonDown("Jump") && player.IsGrounded())
+        if (Input.GetButtonDown("Jump") && player.IsGrounded() && player.CanJump())
         {
             player.ChangeState(new JumpState(player));
         }
         // 슬라이드 입력을 받으면 슬라이드 상태로 전환
-        else if (Input.GetButtonDown("Slide") && player.IsGrounded())
+        else if (Input.GetButtonDown("Slide") && player.IsGrounded() && player.CanSlide())
         {
             player.ChangeState(new SlideState(player));
-        }        
+        }
     }
 
     public override void Exit()
@@ -48,6 +48,7 @@ public class RunState : PlayerState
         // 상태를 벗어날 때 필요한 작업
     }
 }
+
 
 // Jump 상태 클래스
 public class JumpState : PlayerState
@@ -60,6 +61,7 @@ public class JumpState : PlayerState
         Vector3 jumpVector = new Vector3(0f, player.jumpHeight, 0f);
         player.rb.AddForce(jumpVector, ForceMode.Impulse);
         player.isJumping = true; // 점프 중임을 표시
+        player.StartJumpCooldown(); // 점프 쿨타임 시작
     }
 
     public override void Update()
@@ -98,6 +100,7 @@ public class SlideState : PlayerState
             player.anim.SetTrigger("Slide");
             player.rb.velocity = Vector3.zero; // 이동 중지
             slideTimer = slideDuration;
+            player.StartSlideCooldown(); // 슬라이드 쿨타임 시작
         }
         else
         {
@@ -147,20 +150,36 @@ public class DeadState : PlayerState
     }
 }
 
+
 public class Player : MonoBehaviour
 {
     public Transform groundCheck; // 땅 체크를 위한 위치
+
+    public Image jumpCooldownImage; // 점프 쿨타임 UI 이미지
+    public Image slideCooldownImage; // 슬라이드 쿨타임 UI 이미지
+
+    public TextMeshProUGUI jumpCooldownTextMesh; // 점프 쿨타임 UI 텍스트
+    public TextMeshProUGUI slideCooldownTextMesh; // 슬라이드 쿨타임 UI 텍스트
 
     public float forwardSpeed = 5.0f;   // 캐릭터의 앞으로 이동 속도
     public float lateralSpeed = 5.0f;   // 캐릭터의 좌우 이동 속도
     public float jumpHeight = 10f; // 점프 높이 조절을 위한 변수
     public float groundCheckRadius = 0.1f; // 땅 체크를 위한 구의 반지름    
 
+    public float jumpCooldownTime = 2.0f; // 점프 쿨타임 시간
+    public float slideCooldownTime = 2.0f; // 슬라이드 쿨타임 시간
+
     [HideInInspector] public bool isLive = true; // 플레이어가 살아있는지 확인을 위한 변수
     [HideInInspector] public bool isJumping = false; // 점프 중인지 여부    
     [HideInInspector] public Animator anim; // Animator 컴포넌트 참조를 위한 변수
     [HideInInspector] public Rigidbody rb; // Rigidbody 컴포넌트 참조를 위한 변수
+
     private PlayerState currentState; // 플레이어 행동 상태
+    private bool canJump = true; // 점프 가능 여부
+    private bool canSlide = true; // 슬라이드 가능 여부
+
+    private float jumpCooldownEndTime;
+    private float slideCooldownEndTime;
 
     void Start()
     {
@@ -174,6 +193,9 @@ public class Player : MonoBehaviour
         DefaultMove();
 
         currentState.Update(); // 현재 상태의 Update 메서드 호출
+
+        // 쿨타임 UI 업데이트
+        UpdateCooldownUI();
     }
 
     private void DefaultMove()
@@ -220,6 +242,74 @@ public class Player : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             ChangeState(new DeadState(this)); // 죽는 상태로 전환
+        }
+    }
+
+    // 점프 쿨타임 시작
+    public void StartJumpCooldown()
+    {
+        canJump = false;
+        jumpCooldownEndTime = Time.time + jumpCooldownTime;
+        Invoke(nameof(ResetJumpCooldown), jumpCooldownTime);
+    }
+
+    // 슬라이드 쿨타임 시작
+    public void StartSlideCooldown()
+    {
+        canSlide = false;
+        slideCooldownEndTime = Time.time + slideCooldownTime;
+        Invoke(nameof(ResetSlideCooldown), slideCooldownTime);
+    }
+
+    // 점프 쿨타임 리셋
+    private void ResetJumpCooldown()
+    {
+        canJump = true;
+    }
+
+    // 슬라이드 쿨타임 리셋
+    private void ResetSlideCooldown()
+    {
+        canSlide = true;
+    }
+
+    // 점프 가능 여부 확인
+    public bool CanJump()
+    {
+        return canJump;
+    }
+
+    // 슬라이드 가능 여부 확인
+    public bool CanSlide()
+    {
+        return canSlide;
+    }
+
+    // 쿨타임 UI 업데이트
+    private void UpdateCooldownUI()
+    {
+        if (!canJump)
+        {
+            float remainingJumpTime = jumpCooldownEndTime - Time.time;
+            jumpCooldownImage.fillAmount = remainingJumpTime / jumpCooldownTime;            
+            jumpCooldownTextMesh.text = remainingJumpTime.ToString("N1");
+        }
+        else
+        {
+            jumpCooldownImage.fillAmount = 0;
+            jumpCooldownTextMesh.text = "";
+        }
+
+        if (!canSlide)
+        {
+            float remainingSlideTime = slideCooldownEndTime - Time.time;
+            slideCooldownImage.fillAmount = remainingSlideTime / slideCooldownTime;
+            slideCooldownTextMesh.text = remainingSlideTime.ToString("N1");
+        }
+        else
+        {
+            slideCooldownImage.fillAmount = 0;
+            slideCooldownTextMesh.text = "";
         }
     }
 }
