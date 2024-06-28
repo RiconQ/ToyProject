@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -15,6 +16,15 @@ public abstract class PlayerState
     public abstract void Enter();
     public abstract void Update();
     public abstract void Exit();
+
+    // 스킬 사용 입력 처리    
+    protected void HandleSkillInput()
+    {
+        if (Input.GetKeyDown(KeyCode.D) && player.CanUseSkill())
+        {
+            player.ActivateSkill();
+        }
+    }
 }
 
 public class RunState : PlayerState
@@ -41,6 +51,9 @@ public class RunState : PlayerState
         {
             player.ChangeState(new SlideState(player));
         }
+
+        // 스킬 사용 입력 처리
+        HandleSkillInput();
     }
 
     public override void Exit()
@@ -77,6 +90,9 @@ public class JumpState : PlayerState
             // 점프 중에도 좌우 이동 처리
             player.UpdatePlayerInputHorizontalMove();
         }
+
+        // 스킬 사용 입력 처리
+        HandleSkillInput();
     }
 
     public override void Exit()
@@ -107,10 +123,13 @@ public class SlideState : PlayerState
             player.StartSlideCooldown(); // 슬라이드 쿨타임 시작                        
         }
         else
-        {           
+        {
             // 만약 땅에 있지 않으면 Run 상태로 전환
             player.ChangeState(new RunState(player));
         }
+
+        // 스킬 사용 입력 처리
+        HandleSkillInput();
     }
 
     public override void Update()
@@ -127,6 +146,9 @@ public class SlideState : PlayerState
 
             player.ChangeState(new RunState(player));
         }
+
+        // 스킬 사용 입력 처리
+        HandleSkillInput();
     }
 
     public override void Exit()
@@ -158,10 +180,11 @@ public class DeadState : PlayerState
     }
 }
 
-
 public class Player : MonoBehaviour
 {
-    public Transform groundCheck; // 땅 체크를 위한 위치
+    public Transform groundCheck; // 땅 체크를 위한 위치                                                     
+    ParticleSystem[] particleSystems; // 현재 게임 오브젝트의 모든 파티클 시스템 비활성화
+
     [HideInInspector] public Vector3 OriginColliderCenter = new Vector3(0f, 1f, 0f);
     [HideInInspector] public float OriginColliderHeight = 2f;
     [HideInInspector] public Vector3 SlideColliderCenter = new Vector3(0f, 0.5f, 0f);
@@ -169,9 +192,11 @@ public class Player : MonoBehaviour
 
     public Image jumpCooldownImage; // 점프 쿨타임 UI 이미지
     public Image slideCooldownImage; // 슬라이드 쿨타임 UI 이미지
+    public Image skillCooldownImage; // 스킬 쿨타임 UI 이미지
 
     public TextMeshProUGUI jumpCooldownTextMesh; // 점프 쿨타임 UI 텍스트
     public TextMeshProUGUI slideCooldownTextMesh; // 슬라이드 쿨타임 UI 텍스트
+    public TextMeshProUGUI skillCooldownTextMesh; // 스킬 쿨타임 UI 텍스트
 
     public float forwardSpeed = 5.0f;   // 캐릭터의 앞으로 이동 속도
     public float lateralSpeed = 5.0f;   // 캐릭터의 좌우 이동 속도
@@ -180,6 +205,7 @@ public class Player : MonoBehaviour
 
     public float jumpCooldownTime = 2.0f; // 점프 쿨타임 시간
     public float slideCooldownTime = 2.0f; // 슬라이드 쿨타임 시간
+    public float skillCooldownTime = 10.0f; // 스킬 쿨타임 시간
 
     [HideInInspector] public bool isLive = true; // 플레이어가 살아있는지 확인을 위한 변수
     [HideInInspector] public bool isJumping = false; // 점프 중인지 여부    
@@ -190,15 +216,21 @@ public class Player : MonoBehaviour
     private PlayerState currentState; // 플레이어 행동 상태
     private bool canJump = true; // 점프 가능 여부
     private bool canSlide = true; // 슬라이드 가능 여부
+    private bool canUseSkill = true; // 스킬 사용 가능 여부
 
     private float jumpCooldownEndTime;
     private float slideCooldownEndTime;
+    private float skillCooldownEndTime;
+
+    [HideInInspector] public float SkillValue = 2.0f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 할당
         anim = GetComponent<Animator>(); // Animator 컴포넌트 할당
-        capsuleCollider = GetComponent<CapsuleCollider>(); // CapsuleCollider 컴포넌트 할당
+        capsuleCollider = GetComponent<CapsuleCollider>(); // CapsuleCollider 컴포넌트 할당               
+        particleSystems = GetComponentsInChildren<ParticleSystem>(); // 스킬 파티클들을 할당
+        particleSystems.ToList().ForEach(ps => ps.Stop()); // LINQ를 사용하여 간단하게 모든 파티클 시스템을 중지하기
 
         ChangeState(new RunState(this)); // 초기 상태를 Run으로 설정
     }
@@ -207,7 +239,11 @@ public class Player : MonoBehaviour
     {
         DefaultMove();
 
-        currentState.Update(); // 현재 상태의 Update 메서드 호출
+        // 현재 상태의 Update 메서드 호출
+        currentState.Update();
+
+        // 스킬 사용을 위한 입력을 각 상태에서 받을 수 있도록 함
+        HandleSkillInput();
 
         // 쿨타임 UI 업데이트
         UpdateCooldownUI();
@@ -279,6 +315,14 @@ public class Player : MonoBehaviour
         Invoke(nameof(ResetSlideCooldown), slideCooldownTime);
     }
 
+    // 스킬 쿨타임 시작
+    public void StartSkillCooldown()
+    {
+        canUseSkill = false;
+        skillCooldownEndTime = Time.time + skillCooldownTime;
+        Invoke(nameof(ResetSkillCooldown), skillCooldownTime);
+    }
+
     // 점프 쿨타임 리셋
     private void ResetJumpCooldown()
     {
@@ -289,6 +333,16 @@ public class Player : MonoBehaviour
     private void ResetSlideCooldown()
     {
         canSlide = true;
+    }
+
+    // 스킬 쿨타임 리셋
+    private void ResetSkillCooldown()
+    {
+        canUseSkill = true;        
+        particleSystems.ToList().ForEach(ps => ps.Stop());
+        anim.SetFloat("SkillSpeed", 1.0f);
+        forwardSpeed /= SkillValue;
+        lateralSpeed /= SkillValue;
     }
 
     // 점프 가능 여부 확인
@@ -303,13 +357,19 @@ public class Player : MonoBehaviour
         return canSlide;
     }
 
+    // 스킬 사용 가능 여부 확인
+    public bool CanUseSkill()
+    {
+        return canUseSkill;
+    }
+
     // 쿨타임 UI 업데이트
     private void UpdateCooldownUI()
     {
         if (!canJump)
         {
             float remainingJumpTime = jumpCooldownEndTime - Time.time;
-            jumpCooldownImage.fillAmount = remainingJumpTime / jumpCooldownTime;            
+            jumpCooldownImage.fillAmount = remainingJumpTime / jumpCooldownTime;
             jumpCooldownTextMesh.text = remainingJumpTime.ToString("N1");
         }
         else
@@ -328,6 +388,45 @@ public class Player : MonoBehaviour
         {
             slideCooldownImage.fillAmount = 0;
             slideCooldownTextMesh.text = "";
+        }
+
+        if (!canUseSkill)
+        {
+            float remainingSlideTime = skillCooldownEndTime - Time.time;
+            skillCooldownImage.fillAmount = remainingSlideTime / skillCooldownTime;
+            skillCooldownTextMesh.text = remainingSlideTime.ToString("N1");
+        }
+        else
+        {
+            skillCooldownImage.fillAmount = 0;
+            skillCooldownTextMesh.text = "";
+        }
+    }
+
+    // 스킬 사용 입력 처리
+    private void HandleSkillInput()
+    {
+        if (Input.GetKeyDown(KeyCode.D) && CanUseSkill())
+        {
+            ActivateSkill();
+        }
+    }
+
+    // 스킬 사용
+    public void ActivateSkill()
+    {
+        if (CanUseSkill())
+        {
+            // 스킬 이펙트 활성화           
+            particleSystems.ToList().ForEach(ps => ps.Play());
+
+            // 이동 속도 증가
+            anim.SetFloat("SkillSpeed", 2.0f);            
+            forwardSpeed *= SkillValue;
+            lateralSpeed *= SkillValue;
+
+            // 예시로 스킬 쿨타임 시작 메서드 호출
+            StartSkillCooldown();
         }
     }
 }
