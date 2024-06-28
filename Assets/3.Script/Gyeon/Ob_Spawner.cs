@@ -27,7 +27,8 @@ public class Ob_Spawner : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.StartGameTimer();
+        GameManager.instance.SetPlayer();
+
         StartCoroutine(SpawnEnemy_co());
     }
 
@@ -67,8 +68,8 @@ public class Ob_Spawner : MonoBehaviour
         WaitForSeconds wfs = new WaitForSeconds(SpawnTime);
         while (true)
         {
-           // float positionX = 0;
-           // Vector3 position = new Vector3(positionX, 0, stage_data.LimitMax.z + 1f);
+            // float positionX = 0;
+            // Vector3 position = new Vector3(positionX, 0, stage_data.LimitMax.z + 1f);
             Ob_enable();
             yield return wfs;
         }

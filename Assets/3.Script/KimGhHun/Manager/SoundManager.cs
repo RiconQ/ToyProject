@@ -36,6 +36,10 @@ public class SoundManager : MonoBehaviour
 
     [Header("SFX Audio Clip")]
     [SerializeField] private AudioClip buttonClick;
+    [SerializeField] private AudioClip deathSfx;
+    [SerializeField] private AudioClip jumpSfx;
+    [SerializeField] private AudioClip skillSfx;
+
 
     private void Start()
     {
@@ -90,6 +94,16 @@ public class SoundManager : MonoBehaviour
             case 0:
                 sfxAudioSource.PlayOneShot(buttonClick);
                 break;
+            case 1:
+                sfxAudioSource.PlayOneShot(deathSfx);
+                break;
+            case 2:
+                sfxAudioSource.PlayOneShot(jumpSfx);
+                break;
+            case 3:
+                sfxAudioSource.PlayOneShot(skillSfx);
+                break;
+
         }
     }
 
