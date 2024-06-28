@@ -192,6 +192,7 @@ public class Player : MonoBehaviour
 
     public Image jumpCooldownImage; // 점프 쿨타임 UI 이미지
     public Image slideCooldownImage; // 슬라이드 쿨타임 UI 이미지
+    public Image skillCooldownBGImage; // 스킬 쿨타임 백그라운드 UI 이미지
     public Image skillCooldownImage; // 스킬 쿨타임 UI 이미지
 
     public TextMeshProUGUI jumpCooldownTextMesh; // 점프 쿨타임 UI 텍스트
@@ -226,13 +227,41 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public float SkillValue = 2.0f;
 
+    public enum PlayerType
+    {
+        FastMan,
+        ShildMan,
+        ZeroGravityMan,
+        MaxType
+    }
+
+    public PlayerType SelectPlayerType = PlayerType.FastMan;
+
+    // 직업별 스킬 이미지
+    public Sprite[] SkillSprites = new Sprite[(int)PlayerType.MaxType];
+
+    // 직업별 스킬 파티클
+    public GameObject[] SkillParticles = new GameObject[(int)PlayerType.MaxType];
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 할당
         anim = GetComponent<Animator>(); // Animator 컴포넌트 할당
         capsuleCollider = GetComponent<CapsuleCollider>(); // CapsuleCollider 컴포넌트 할당               
-        particleSystems = GetComponentsInChildren<ParticleSystem>(); // 스킬 파티클들을 할당
-        particleSystems.ToList().ForEach(ps => ps.Stop()); // LINQ를 사용하여 간단하게 모든 파티클 시스템을 중지하기
+        
+        // 직업별 스킬 파티클 초기 세팅
+        particleSystems = SkillParticles[(int)SelectPlayerType].gameObject.GetComponentsInChildren<ParticleSystem>(); // 스킬 파티클들을 할당
+
+        // SkillParticles 배열에 있는 모든 파티클 시스템을 중지 // Linq
+        SkillParticles
+            .Where(sp => sp != null) // null 체크
+            .SelectMany(sp => sp.GetComponentsInChildren<ParticleSystem>())
+            .ToList()
+            .ForEach(ps => ps.Stop());
+
+        // 직업별 스킬 UI 이미지 세팅
+        skillCooldownBGImage.sprite = SkillSprites[(int)SelectPlayerType];
+        skillCooldownImage.sprite = SkillSprites[(int)SelectPlayerType];
 
         ChangeState(new RunState(this)); // 초기 상태를 Run으로 설정
     }
