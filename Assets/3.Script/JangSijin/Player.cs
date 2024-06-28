@@ -226,6 +226,9 @@ public class Player : MonoBehaviour
 
     public void UpdatePlayerInputHorizontalMove()
     {
+        if (!isLive)
+            return;
+
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * lateralSpeed * Time.deltaTime);
     }
