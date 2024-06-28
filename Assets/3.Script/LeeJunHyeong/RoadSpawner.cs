@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class RoadSpawner : MonoBehaviour
 {
-    public List<GameObject> roads;
-    private float offset = 100f;
+    /*
+     로드 스포너에 들어있습니다.
+     */
+
+    public List<GameObject> roads; // 모든 로드 저장
+    private float offset = 100f; 
 
 
     private void Start()
@@ -31,10 +35,16 @@ public class RoadSpawner : MonoBehaviour
         roads.Add(moveRoad);
 
         DecoSpawner[] decoSpawners = moveRoad.GetComponentsInChildren<DecoSpawner>();
-        
+        IslandSpawner[] islandSpawners = moveRoad.GetComponentsInChildren<IslandSpawner>();
+
         foreach(DecoSpawner decoSpawner in decoSpawners)
         {
             decoSpawner.SpawnDecos();
+        }
+
+        foreach(IslandSpawner islandSpawner in islandSpawners)
+        {
+            islandSpawner.SpawnIsland();
         }
     }
 }

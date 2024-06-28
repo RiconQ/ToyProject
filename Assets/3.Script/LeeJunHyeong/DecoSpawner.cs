@@ -20,18 +20,17 @@ public class DecoSpawner : MonoBehaviour
         MaxY = (SpawnerCollider.bounds.size.y * 0.5f);
         MaxZ = (SpawnerCollider.bounds.size.z * 0.5f);
 
-    }
-
-    private void Start()
-    {
-        Decos = new List<GameObject>();
-
-        foreach(Transform child in transform)
+        foreach (Transform child in transform)
         {
             Decos.Add(child.gameObject);
         }
 
-        foreach (GameObject deco in Decos)
+        SpawnDecos();
+    }
+
+    public void SpawnDecos()
+    {
+        foreach(GameObject deco in Decos)
         {
             int Spawnflag = Random.Range(0, 2);
 
@@ -41,60 +40,14 @@ public class DecoSpawner : MonoBehaviour
                 Random.Range(-MaxZ, MaxZ)
                 );
 
-            if (!deco.CompareTag("Island"))
+            if (Spawnflag.Equals(1))
             {
-                if (Spawnflag < 5)
-                {
-                    deco.SetActive(true);
-                }
-
-                else
-                {
-                    deco.SetActive(false);
-                }
-            }
-
-            else
-            { 
-                    deco.SetActive(false);
-            }
-
-            deco.transform.position = transform.position + SpawnPos;
-        }
-    }
-
-    public void SpawnDecos()
-    {
-        foreach(GameObject deco in Decos)
-        {
-            int Spawnflag = Random.Range(0, 20);
-
-            Vector3 SpawnPos = new Vector3(
-                Random.Range(-MaxX, MaxX),
-                Random.Range(-MaxY, MaxY),
-                Random.Range(-MaxZ, MaxZ)
-                );
-
-            if (!deco.CompareTag("Island"))
-            {
-                if (Spawnflag < 5)
-                {
-                    deco.SetActive(true);
-                }
-
-                else
-                {
-                    deco.SetActive(false);
-                }
+                deco.gameObject.SetActive(true);
             }
 
             else
             {
-                if(Spawnflag < 4)
-                    deco.SetActive(true);
-
-                else
-                    deco.SetActive(false);
+                deco.gameObject.SetActive(false);
             }
 
             deco.transform.position = transform.position + SpawnPos;

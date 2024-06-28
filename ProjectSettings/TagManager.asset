@@ -8,6 +8,7 @@ TagManager:
   - MapSpawnTrigger
   - Die
   - Island
+  - DieCanvas
   layers:
   - Default
   - TransparentFX
