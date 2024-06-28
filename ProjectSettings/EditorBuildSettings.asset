@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scene/KimGhHun/PlayScene.unity
     guid: 3e5d55e8b3a97e641b85a908ceac394e
+  - enabled: 1
+    path: Assets/1.Scene/ProtoType_JangSijin.unity
+    guid: abae2b19a7ae5d9458bf4d26a4549c68
   m_configObjects: {}
