@@ -37,10 +37,11 @@ public class Ob_Spawner : MonoBehaviour
             GameObject enemy = Enemy_Q.Dequeue();
             //Vector3 initialPosition = enemy.transform.position;
             // position.y = initialPosition.y; // 프리팹의 초기 y 값을 유지
-            Vector3 position = new Vector3(transform.position.x, enemy.transform.position.y, transform.position.z);
+            Vector3 position = new Vector3(0, enemy.transform.position.y, transform.position.z);
             enemy.transform.position = position;
             if (!enemy.activeSelf)
                 enemy.SetActive(true);
+            GameManager.instance.AddScore();
             StartCoroutine(DisableAfterTime(enemy, 1f)); // 10초 후 비활성화
         }
     }

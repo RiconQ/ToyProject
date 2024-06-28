@@ -26,13 +26,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private bool isGameStart = false;
+
     [SerializeField] private string playScene;
+    [SerializeField] private int score = 0;
 
     public void SelectCharacter(int index)
     {
         Debug.Log($"선택된 캐릭터 : {index}");
         // 캐릭터 데이터 할당
         SceneManager.LoadScene(playScene);
+        StartGameTimer();
         SoundManager.instance.PlayMusic(1);
+    }
+
+    public void StartGameTimer()
+    {
+        isGameStart = true;
+    }
+
+    public void AddScore()
+    {
+        if (isGameStart)
+            score += 1;
     }
 }
