@@ -7,7 +7,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private float movespeed;
     [SerializeField] private Vector3 moveDirection = Vector3.zero;
 
-
     void Update()
     {
         transform.position += moveDirection * movespeed * Time.deltaTime;
