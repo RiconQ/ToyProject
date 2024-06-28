@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - MapSpawnTrigger
+  - Die
+  - Island
   layers:
   - Default
   - TransparentFX

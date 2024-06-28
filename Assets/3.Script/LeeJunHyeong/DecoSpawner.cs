@@ -41,14 +41,22 @@ public class DecoSpawner : MonoBehaviour
                 Random.Range(-MaxZ, MaxZ)
                 );
 
-            if (Spawnflag.Equals(1))
+            if (!deco.CompareTag("Island"))
             {
-                deco.SetActive(true);
+                if (Spawnflag < 5)
+                {
+                    deco.SetActive(true);
+                }
+
+                else
+                {
+                    deco.SetActive(false);
+                }
             }
 
             else
-            {
-                deco.SetActive(false);
+            { 
+                    deco.SetActive(false);
             }
 
             deco.transform.position = transform.position + SpawnPos;
@@ -59,7 +67,7 @@ public class DecoSpawner : MonoBehaviour
     {
         foreach(GameObject deco in Decos)
         {
-            int Spawnflag = Random.Range(0, 2);
+            int Spawnflag = Random.Range(0, 20);
 
             Vector3 SpawnPos = new Vector3(
                 Random.Range(-MaxX, MaxX),
@@ -67,14 +75,26 @@ public class DecoSpawner : MonoBehaviour
                 Random.Range(-MaxZ, MaxZ)
                 );
 
-            if(Spawnflag.Equals(1))
+            if (!deco.CompareTag("Island"))
             {
-                deco.SetActive(true);
+                if (Spawnflag < 5)
+                {
+                    deco.SetActive(true);
+                }
+
+                else
+                {
+                    deco.SetActive(false);
+                }
             }
 
             else
             {
-                deco.SetActive(false);
+                if(Spawnflag < 4)
+                    deco.SetActive(true);
+
+                else
+                    deco.SetActive(false);
             }
 
             deco.transform.position = transform.position + SpawnPos;
