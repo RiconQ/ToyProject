@@ -40,6 +40,11 @@ public class RunState : PlayerState
         {
             player.ChangeState(new SlideState(player));
         }
+        // 죽음 상태로 전환
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            player.ChangeState(new DeadState(player));
+        }
     }
 
     public override void Exit()
@@ -115,6 +120,26 @@ public class SlideState : PlayerState
         {
             player.ChangeState(new RunState(player));
         }
+    }
+
+    public override void Exit()
+    {
+        // 상태를 벗어날 때 필요한 작업
+    }
+}
+
+// Dead 상태 클래스
+public class DeadState : PlayerState
+{
+    public DeadState(Player player) : base(player) { }
+
+    public override void Enter()
+    {
+        player.anim.SetTrigger("Dead");
+    }
+
+    public override void Update()
+    {
     }
 
     public override void Exit()
