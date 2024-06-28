@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 3287515268044561073}
   m_Layer: 0
   m_Name: Squid4
-  m_TagString: Die
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

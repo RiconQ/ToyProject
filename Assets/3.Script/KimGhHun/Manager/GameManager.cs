@@ -36,14 +36,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject helpWindow;
     [SerializeField] private GameObject selectWindow;
 
+    public List<BoxCollider> obstacleColliders;
+
+    public int classIndex = 0;
+
     private void Start()
     {
+        obstacleColliders = new List<BoxCollider>();
         scoreCanvas.gameObject.SetActive(false);
         gameOverCanvas.SetActive(false);
     }
     public void SelectCharacter(int index)
     {
         Debug.Log($"선택된 캐릭터 : {index}");
+        classIndex = index;
         // 캐릭터 데이터 할당
         SceneManager.LoadScene(playScene);
         StartGameTimer();
@@ -52,6 +58,7 @@ public class GameManager : MonoBehaviour
     public void SetPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        // 플레이어 스킬 설정 -> Index에 따라서
     }
     public void StartGameTimer()
     {
@@ -118,7 +125,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("RestartGame");
-
+        obstacleColliders = new List<BoxCollider>();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         scoreCanvas.ShowBestScore();
         score = 0;
@@ -134,5 +141,10 @@ public class GameManager : MonoBehaviour
         helpWindow.SetActive(false);
         selectWindow.SetActive(false);
         SoundManager.instance.PlayMusic(0);
+    }
+
+    public void SetObstacleCollider(bool value)
+    {
+        
     }
 }
