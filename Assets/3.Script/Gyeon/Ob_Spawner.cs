@@ -41,6 +41,7 @@ public class Ob_Spawner : MonoBehaviour
             enemy.transform.position = position;
             if (!enemy.activeSelf)
                 enemy.SetActive(true);
+            GameManager.instance.AddScore();
             StartCoroutine(DisableAfterTime(enemy, 1f)); // 10초 후 비활성화
         }
     }
