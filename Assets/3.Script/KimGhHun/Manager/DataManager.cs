@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+/*
+ * DataManager
+ * 사운드 설정
+ *      저장 - 게임이 종료될때
+ *      불러오기 - 게임이 처음 시작될때
+ * 최고 점수
+ *      저장 - 플레이어가 최고 점수를 갱신했을때
+ *      불러오기 - 게임이 처음 시작될때?
+ */
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance = null;

@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scene/KimGhHun/UI Test.unity
     guid: aa66a7f90e5a52141800e75a7213a064
+  - enabled: 1
+    path: Assets/1.Scene/KimGhHun/PlayScene.unity
+    guid: 3e5d55e8b3a97e641b85a908ceac394e
   m_configObjects: {}
