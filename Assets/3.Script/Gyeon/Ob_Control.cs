@@ -16,17 +16,17 @@ public class Ob_Control : MonoBehaviour
         GameObject.FindObjectOfType<Ob_Spawner>().TryGetComponent(out Spawner);
     }
 
-
-    private void LateUpdate()  //  시간으로 수정
-    {
-        if (transform.position.z < stage_data.LimitMin.z - destoryWieght ||
-            transform.position.z > stage_data.LimitMax.z + destoryWieght ||
-            transform.position.x < stage_data.LimitMin.x - destoryWieght ||
-            transform.position.x > stage_data.LimitMax.x + destoryWieght)
-        {
-            onDie();
-        }
-    }
+   
+   // private void LateUpdate()  //  시간으로 수정
+   // {
+   //     if (transform.position.z < stage_data.LimitMin.z - destoryWieght ||
+   //         transform.position.z > stage_data.LimitMax.z + destoryWieght ||
+   //         transform.position.x < stage_data.LimitMin.x - destoryWieght ||
+   //         transform.position.x > stage_data.LimitMax.x + destoryWieght)
+   //     {
+   //         onDie();
+   //     }
+   // }
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player"))
