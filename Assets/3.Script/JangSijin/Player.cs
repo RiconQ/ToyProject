@@ -243,12 +243,16 @@ public class Player : MonoBehaviour
     // 직업별 스킬 파티클
     public GameObject[] SkillParticles = new GameObject[(int)PlayerType.MaxType];
 
+    [SerializeField] public RoadSpawner spawner;
+
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 할당
         anim = GetComponent<Animator>(); // Animator 컴포넌트 할당
         capsuleCollider = GetComponent<CapsuleCollider>(); // CapsuleCollider 컴포넌트 할당               
-        
+
         // 직업별 스킬 파티클 초기 세팅
         particleSystems = SkillParticles[(int)SelectPlayerType].gameObject.GetComponentsInChildren<ParticleSystem>(); // 스킬 파티클들을 할당
 
@@ -328,6 +332,8 @@ public class Player : MonoBehaviour
         {
             ChangeState(new DeadState(this)); // 죽는 상태로 전환
         }
+        spawner.SpawnTriggerEntered();
+
     }
 
     // 점프 쿨타임 시작
@@ -365,12 +371,12 @@ public class Player : MonoBehaviour
     private void ResetSlideCooldown()
     {
         canSlide = true;
-    }    
+    }
 
     // 스킬 쿨타임 리셋
     private void ResetSkillCooldown()
     {
-        canUseSkill = true;        
+        canUseSkill = true;
     }
 
     // 스킬 지속시간 리셋
@@ -458,7 +464,7 @@ public class Player : MonoBehaviour
             particleSystems.ToList().ForEach(ps => ps.Play());
 
             // 이동 속도 증가
-            anim.SetFloat("SkillSpeed", SkillValue);            
+            anim.SetFloat("SkillSpeed", SkillValue);
             forwardSpeed *= SkillValue;
             lateralSpeed *= SkillValue;
 
