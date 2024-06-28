@@ -207,6 +207,8 @@ public class Player : MonoBehaviour
     public float slideCooldownTime = 2.0f; // 슬라이드 쿨타임 시간
     public float skillCooldownTime = 10.0f; // 스킬 쿨타임 시간
 
+    public float skillDurationTime = 5.0f; // 스킬 지속 시간
+
     [HideInInspector] public bool isLive = true; // 플레이어가 살아있는지 확인을 위한 변수
     [HideInInspector] public bool isJumping = false; // 점프 중인지 여부    
     [HideInInspector] public Animator anim; // Animator 컴포넌트 참조를 위한 변수
@@ -320,7 +322,7 @@ public class Player : MonoBehaviour
     {
         canUseSkill = false;
         skillCooldownEndTime = Time.time + skillCooldownTime;
-        Invoke(nameof(ResetSkillCooldown), skillCooldownTime);
+        Invoke(nameof(ResetSkillCooldown), skillDurationTime);
     }
 
     // 점프 쿨타임 리셋
@@ -421,7 +423,7 @@ public class Player : MonoBehaviour
             particleSystems.ToList().ForEach(ps => ps.Play());
 
             // 이동 속도 증가
-            anim.SetFloat("SkillSpeed", 2.0f);            
+            anim.SetFloat("SkillSpeed", SkillValue);            
             forwardSpeed *= SkillValue;
             lateralSpeed *= SkillValue;
 
