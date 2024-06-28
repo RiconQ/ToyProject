@@ -30,6 +30,13 @@ public class SoundManager : MonoBehaviour
     public Slider bgmSlider;
     public Slider sfxSlider;
 
+    [Header("BGM Audio Clip")]
+    [SerializeField] private AudioClip mainMenuBGM;
+    [SerializeField] private AudioClip inGameBGM;
+
+    [Header("SFX Audio Clip")]
+    [SerializeField] private AudioClip buttonClick;
+
     private void Start()
     {
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
@@ -39,6 +46,7 @@ public class SoundManager : MonoBehaviour
         masterSlider.value = DataManager.instance.soundData.master;
         bgmSlider.value = DataManager.instance.soundData.bgm;
         sfxSlider.value = DataManager.instance.soundData.sfx;
+        PlayMusic(0);
     }
 
 
@@ -60,4 +68,30 @@ public class SoundManager : MonoBehaviour
         float volume = Mathf.Lerp(-80f, 0f, value / 9f);
         audioMixer.SetFloat("SFX", volume);
     }
+
+    public void PlayMusic(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                bgmAudioSource.clip = mainMenuBGM;
+                break;
+            case 1:
+                bgmAudioSource.clip = inGameBGM;
+                break;
+        }
+        bgmAudioSource.Play();
+    }
+
+    public void PlaySFX(int index)
+    { 
+        switch(index)
+        {
+            case 0:
+                sfxAudioSource.PlayOneShot(buttonClick);
+                break;
+        }
+    }
+
 }
+

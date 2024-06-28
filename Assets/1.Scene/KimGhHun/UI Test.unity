@@ -654,11 +654,11 @@ RectTransform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 479967418}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -11.287}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -511, y: -165}
+  m_AnchoredPosition: {x: -625, y: -261}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &104298157
@@ -1908,6 +1908,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1574208354}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &301275807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2322,16 +2334,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335825570}
-  m_LocalRotation: {x: -0, y: -0, z: 0.34551987, w: 0.9384114}
+  m_LocalRotation: {x: -0, y: -0, z: 0.24018505, w: 0.97072715}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 479967418}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40.427}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 27.795}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 528.44855, y: 303.97485}
+  m_AnchoredPosition: {x: 379, y: 272}
   m_SizeDelta: {x: 800, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &335825572
@@ -2367,7 +2379,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCD5C\uACE0\n\uC758\uD15C\n\uD50C\uB7F0"
+  m_Text: "\uCD5C\uACE0\n\uC758\uAE40\n\uC9C0\uD6C8"
 --- !u!222 &335825573
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2401,17 +2413,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338213579}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.15345107, w: 0.98815626}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 479967418}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -17.654}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
-  m_SizeDelta: {x: 500, y: 500}
+  m_AnchoredPosition: {x: -60.860596, y: -59.139893}
+  m_SizeDelta: {x: 700, y: 700}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &338213581
 MonoBehaviour:
@@ -3122,9 +3134,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 338213580}
   - {fileID: 104298156}
   - {fileID: 1265414355}
+  - {fileID: 338213580}
   - {fileID: 1855310336}
   - {fileID: 335825571}
   m_Father: {fileID: 178498613}
@@ -6116,6 +6128,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1574208354}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &910719573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8155,7 +8179,7 @@ RectTransform:
   m_LocalScale: {x: 3.3430002, y: 3.3430002, z: 1.3372}
   m_Children: []
   m_Father: {fileID: 479967418}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -158.404}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -9679,6 +9703,9 @@ MonoBehaviour:
   masterSlider: {fileID: 303517279}
   bgmSlider: {fileID: 1537498870}
   sfxSlider: {fileID: 873010551}
+  mainMenuBGM: {fileID: 8300000, guid: 2346619ac43a9104dacd7f7dcba26bbb, type: 3}
+  inGameBGM: {fileID: 8300000, guid: 5f18809f5955ff240bf52db384980841, type: 3}
+  buttonClick: {fileID: 8300000, guid: dbd4360f70ec4c146bfdeb1c6c12a8e2, type: 3}
 --- !u!4 &1574208355
 Transform:
   m_ObjectHideFlags: 0
@@ -10325,6 +10352,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1574208354}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

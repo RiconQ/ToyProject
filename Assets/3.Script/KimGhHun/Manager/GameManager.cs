@@ -33,5 +33,6 @@ public class GameManager : MonoBehaviour
         Debug.Log($"선택된 캐릭터 : {index}");
         // 캐릭터 데이터 할당
         SceneManager.LoadScene(playScene);
+        SoundManager.instance.PlayMusic(1);
     }
 }

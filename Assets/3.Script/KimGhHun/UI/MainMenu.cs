@@ -55,6 +55,7 @@ public class MainMenu : MonoBehaviour
 
     private void ToggleCharacterSelect()
     {
+        SoundManager.instance.PlaySFX(0);
         characterSelectPanel.SetActive(!characterSelectPanel.activeSelf);
         characterModel.SetActive(!characterModel.activeSelf);
     }
@@ -63,6 +64,7 @@ public class MainMenu : MonoBehaviour
     {
         // 게임 설정 버튼
         // 사운드 설정
+        SoundManager.instance.PlaySFX(0);
         settingFramePanel.SetActive(!settingFramePanel.activeSelf);
     }
 
@@ -71,6 +73,7 @@ public class MainMenu : MonoBehaviour
         //게임 종료 버튼
 
         //사운드 설정 저장
+        SoundManager.instance.PlaySFX(0);
         DataManager.instance.SaveSound();
 
         Application.Quit();
@@ -78,6 +81,7 @@ public class MainMenu : MonoBehaviour
 
     public void ToggleBestScore()
     {
+        SoundManager.instance.PlaySFX(0);
         bestScorePanel.SetActive(!bestScorePanel.activeSelf);
     }
 }
