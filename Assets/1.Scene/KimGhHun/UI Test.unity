@@ -2717,6 +2717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  direction: {x: 0, y: 5, z: 0}
 --- !u!95 &412613253
 Animator:
   serializedVersion: 3
@@ -8148,7 +8149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a52720c35c04d0448d736c5289cdcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playScene: TestPlay
+  playScene: TestPlayNew
+  score: 0
+  player: {fileID: 0}
+  scoreCanvas: {fileID: 0}
 --- !u!1 &1265414354
 GameObject:
   m_ObjectHideFlags: 0
@@ -10893,6 +10897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  direction: {x: 0, y: 5, z: 0}
 --- !u!95 &1720862340
 Animator:
   serializedVersion: 3
@@ -14398,6 +14403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  direction: {x: 0, y: 5, z: 0}
 --- !u!137 &1017311491246892726
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

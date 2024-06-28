@@ -16,9 +16,9 @@ public class DecoSpawner : MonoBehaviour
         Decos = new List<GameObject>();
         SpawnerCollider = GetComponent<Collider>();
 
-        MaxX = (SpawnerCollider.bounds.size.x * 0.5f) - 5f;
-        MaxY = (SpawnerCollider.bounds.size.y * 0.5f) - 5f;
-        MaxZ = (SpawnerCollider.bounds.size.z * 0.5f) - 5f;
+        MaxX = (SpawnerCollider.bounds.size.x * 0.5f);
+        MaxY = (SpawnerCollider.bounds.size.y * 0.5f);
+        MaxZ = (SpawnerCollider.bounds.size.z * 0.5f);
 
     }
 

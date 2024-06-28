@@ -26,6 +26,15 @@ TextureImporter:
   - first:
       213: -4196791425797626592
     second: ALL UI ASSETS on one sheet_7
+  - first:
+      213: -4383363975761947765
+    second: ALL UI ASSETS on one sheet_8
+  - first:
+      213: -2162925620693784119
+    second: ALL UI ASSETS on one sheet_9
+  - first:
+      213: -2480788993376632010
+    second: ALL UI ASSETS on one sheet_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -261,7 +270,7 @@ TextureImporter:
         width: 90
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,7 +291,7 @@ TextureImporter:
         width: 90
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -290,6 +299,69 @@ TextureImporter:
       bones: []
       spriteID: 0256dec0f6002c5c0800000000000000
       internalID: -4196791425797626592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALL UI ASSETS on one sheet_8
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 389
+        width: 41
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 6, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b83177720b92b23c0800000000000000
+      internalID: -4383363975761947765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALL UI ASSETS on one sheet_9
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 409
+        width: 3
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 1, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9a4fe8b9ebbf1e0800000000000000
+      internalID: -2162925620693784119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALL UI ASSETS on one sheet_10
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 498
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6334617ed87729dd0800000000000000
+      internalID: -2480788993376632010
       vertices: []
       indices: 
       edges: []

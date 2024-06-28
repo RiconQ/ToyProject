@@ -830,7 +830,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475133263845378}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475132201254614
 Animator:
   serializedVersion: 3
@@ -3178,7 +3178,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475134191809338}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475132624958403
 Animator:
   serializedVersion: 3
@@ -4851,7 +4851,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475132679182750}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475132842730971
 Animator:
   serializedVersion: 3
@@ -5368,7 +5368,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475133455657629}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475132984759529
 Animator:
   serializedVersion: 3
@@ -5667,7 +5667,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475132744590390}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475133020010733
 Animator:
   serializedVersion: 3
@@ -5754,7 +5754,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475132752814078}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475133021856095
 Animator:
   serializedVersion: 3
@@ -5841,7 +5841,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475133646084661}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475133050654844
 Animator:
   serializedVersion: 3
@@ -6171,7 +6171,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475133736598139}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475133093040763
 Animator:
   serializedVersion: 3
@@ -6380,7 +6380,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475134219254601}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475133158317241
 Animator:
   serializedVersion: 3
@@ -7536,7 +7536,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475134031557905}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475133395815102
 Animator:
   serializedVersion: 3
@@ -7693,7 +7693,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475132880357848}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475133437741274
 Animator:
   serializedVersion: 3
@@ -9955,7 +9955,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475132299520351}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475133801622263
 Animator:
   serializedVersion: 3
@@ -10591,7 +10591,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475132553646848}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475133910153045
 Animator:
   serializedVersion: 3
@@ -10894,7 +10894,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475132328700686}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475133960703151
 Animator:
   serializedVersion: 3
@@ -11222,7 +11222,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475133493454014}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475134013124220
 Animator:
   serializedVersion: 3
@@ -12195,7 +12195,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8386475132317643118}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &8386475134233494422
 Animator:
   serializedVersion: 3
@@ -12290,7 +12290,7 @@ GameObject:
   - component: {fileID: 8666984267607400645}
   - component: {fileID: 8666984267607400642}
   - component: {fileID: 8024241719826376886}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: jump
   m_TagString: Die
   m_Icon: {fileID: 0}
@@ -12362,7 +12362,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 7995483722077529364}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &6281870805682490917
 Animator:
   serializedVersion: 3
@@ -12404,7 +12404,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8666984267607400644}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 1, z: 1}

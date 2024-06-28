@@ -623,7 +623,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299422192700214}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299422118647599
 Animator:
   serializedVersion: 3
@@ -652,7 +652,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299422118647586}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -2131,7 +2131,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299422920533461}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299422367619118
 Animator:
   serializedVersion: 3
@@ -2160,7 +2160,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299422367619117}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -2560,7 +2560,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299422816534852}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299422476219917
 Animator:
   serializedVersion: 3
@@ -2589,7 +2589,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299422476219905}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -2966,7 +2966,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299423904075839}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299422614129580
 Animator:
   serializedVersion: 3
@@ -2995,7 +2995,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299422614129571}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -3823,7 +3823,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299423509737178}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299422761352810
 Animator:
   serializedVersion: 3
@@ -3852,7 +3852,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299422761352809}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -4530,7 +4530,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299422625012337}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299422903598650
 Animator:
   serializedVersion: 3
@@ -4559,7 +4559,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299422903598654}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -5079,7 +5079,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299424014588692}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299422953562408
 Animator:
   serializedVersion: 3
@@ -5108,7 +5108,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299422953562412}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -5848,7 +5848,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299423944197976}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299423082973659
 Animator:
   serializedVersion: 3
@@ -5877,7 +5877,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299423082973663}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -6919,7 +6919,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299424022510756}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299423274993094
 Animator:
   serializedVersion: 3
@@ -6948,7 +6948,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299423274993093}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -7684,7 +7684,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299423244470541}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299423365631723
 Animator:
   serializedVersion: 3
@@ -7713,7 +7713,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299423365631727}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -8140,7 +8140,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299423536927387}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299423428428370
 Animator:
   serializedVersion: 3
@@ -8169,7 +8169,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299423428428374}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -8257,7 +8257,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299422090078489}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299423429445507
 Animator:
   serializedVersion: 3
@@ -8286,7 +8286,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299423429445511}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -9467,7 +9467,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299423571779526}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299423538086846
 Animator:
   serializedVersion: 3
@@ -9496,7 +9496,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299423538086834}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -10231,7 +10231,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299424177869380}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299423657942232
 Animator:
   serializedVersion: 3
@@ -10260,7 +10260,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299423657942239}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -10964,7 +10964,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299423403889149}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299423793297908
 Animator:
   serializedVersion: 3
@@ -10993,7 +10993,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299423793297867}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -12539,7 +12539,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2888299422369626620}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &2888299424053407411
 Animator:
   serializedVersion: 3
@@ -12568,7 +12568,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2888299424053407414}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.26
   m_Height: 0.66957575
   m_Direction: 1
@@ -13621,10 +13621,10 @@ GameObject:
   - component: {fileID: 3064904400225762539}
   - component: {fileID: 3064904400225762536}
   - component: {fileID: 3064904400225762542}
-  - component: {fileID: 3064904400225762537}
   - component: {fileID: 3064904400225762453}
   - component: {fileID: 5443208155479254483}
-  m_Layer: 0
+  - component: {fileID: -5310505271049830714}
+  m_Layer: 4
   m_Name: slide
   m_TagString: Die
   m_Icon: {fileID: 0}
@@ -13639,7 +13639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3064904400225762538}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1465862665891277217}
@@ -13696,7 +13696,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3064904401188403151}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!95 &3064904400225762542
 Animator:
   serializedVersion: 3
@@ -13716,20 +13716,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &3064904400225762537
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3064904400225762538}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.26
-  m_Height: 0.66957575
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.33830807, z: 0}
 --- !u!114 &3064904400225762453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13758,6 +13744,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage_data: {fileID: 11400000, guid: f90d96658db726e478133c64758fcd86, type: 2}
   Spawner: {fileID: 0}
+--- !u!65 &-5310505271049830714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3064904400225762538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3064904400682752790
 GameObject:
   m_ObjectHideFlags: 0

@@ -2387,10 +2387,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 916614636832238054}
+  jumpCooldownImage: {fileID: 0}
+  slideCooldownImage: {fileID: 0}
+  jumpCooldownTextMesh: {fileID: 0}
+  slideCooldownTextMesh: {fileID: 0}
   forwardSpeed: 5
   lateralSpeed: 5
   jumpHeight: 6
   groundCheckRadius: 0.1
+  jumpCooldownTime: 2
+  slideCooldownTime: 2
   isLive: 1
   isJumping: 0
   anim: {fileID: 0}
