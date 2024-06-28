@@ -70,6 +70,7 @@ public class JumpState : PlayerState
 
     public override void Enter()
     {
+        SoundManager.instance.PlaySFX(2);
         player.anim.SetTrigger("Jump");
         Vector3 jumpVector = new Vector3(0f, player.jumpHeight, 0f);
         player.rb.AddForce(jumpVector, ForceMode.Impulse);
@@ -406,7 +407,9 @@ public class Player : MonoBehaviour
                 break;
             case PlayerType.ShildMan:
                 // 무적 상태 초기화
-                // 게임 매니저에서 장애물 모든 오브젝트 콜라이더 활성화                
+                // 게임 매니저에서 장애물 모든 오브젝트 콜라이더 활성화      
+                          
+                GameManager.instance.SetObstacleCollider(true);
                 break;
             case PlayerType.ZeroGravityMan:
                 // 무중력 상태 초기화
@@ -488,6 +491,7 @@ public class Player : MonoBehaviour
     {
         if (CanUseSkill())
         {
+            SoundManager.instance.PlaySFX(3);
             // 스킬 이펙트 활성화           
             particleSystems.ToList().ForEach(ps => ps.Play());
 
@@ -502,6 +506,7 @@ public class Player : MonoBehaviour
                 case PlayerType.ShildMan:
                     // 무적 상태
                     // 게임 매니저에서 장애물 모든 오브젝트 콜라이더 비활성화
+                    GameManager.instance.SetObstacleCollider(false);
                     break;
                 case PlayerType.ZeroGravityMan:
                     // 무중력 상태
