@@ -4,12 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Die
+  - Ground
+  - MapSpawnTrigger
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
