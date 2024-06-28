@@ -5,7 +5,6 @@ using UnityEngine;
 public class Ob_Control : MonoBehaviour
 {
     [SerializeField] private Stage_Data stage_data;
-    private float destoryWieght = 6.0f;
     [SerializeField] private Ob_Spawner Spawner;
 
 
