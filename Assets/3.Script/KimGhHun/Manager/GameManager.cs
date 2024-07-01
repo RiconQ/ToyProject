@@ -138,6 +138,7 @@ public class GameManager : MonoBehaviour
 
     public void ToMainMenu()
     {
+        obstacleColliders = new List<BoxCollider>();
         SceneManager.LoadScene("UI Test");
         scoreCanvas.gameObject.SetActive(false);
         MainMenuCanvasObject.SetActive(true);
@@ -152,5 +153,10 @@ public class GameManager : MonoBehaviour
         {
             item.enabled = value;
         }
+    }
+
+    public void AddCollider(BoxCollider col)
+    {
+        obstacleColliders.Add(col);
     }
 }
