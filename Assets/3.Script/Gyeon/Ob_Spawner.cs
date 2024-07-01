@@ -23,7 +23,7 @@ public class Ob_Spawner : MonoBehaviour
             //enemy.GetComponent<Ob_Control>()
             foreach (var item in enemy.GetComponents<BoxCollider>())
             {
-                GameManager.instance.obstacleColliders.Add(item);
+                GameManager.instance.AddCollider(item);
 
             }
             enemy.SetActive(false);
