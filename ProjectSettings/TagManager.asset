@@ -9,6 +9,7 @@ TagManager:
   - Die
   - Island
   - Obstacle
+  - DieCanvas
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - PostProcessing
   - 
   - 
   - 
