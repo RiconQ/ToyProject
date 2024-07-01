@@ -226,7 +226,9 @@ public class Player : MonoBehaviour
     private float slideCooldownEndTime;
     private float skillCooldownEndTime;
 
-    [HideInInspector] public float SkillValue = 2.0f;
+    [HideInInspector] public float SkillAnimeDefaultSpeed = 1.0f;
+    [HideInInspector] public float SkillRunSpeed = 2.0f;
+    [HideInInspector] public float SkillJumpSpeed = 0.25f;
 
     public enum PlayerType
     {
@@ -254,15 +256,15 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>(); // Animator 컴포넌트 할당
         capsuleCollider = GetComponent<CapsuleCollider>(); // CapsuleCollider 컴포넌트 할당               
 
-        // 직업별 스킬 파티클 초기 세팅
-        particleSystems = SkillParticles[(int)SelectPlayerType].gameObject.GetComponentsInChildren<ParticleSystem>(); // 스킬 파티클들을 할당
-
         // SkillParticles 배열에 있는 모든 파티클 시스템을 중지 // Linq
         SkillParticles
             .Where(sp => sp != null) // null 체크
             .SelectMany(sp => sp.GetComponentsInChildren<ParticleSystem>())
             .ToList()
             .ForEach(ps => ps.Stop());
+
+        // 직업별 스킬 파티클 초기 세팅
+        particleSystems = SkillParticles[(int)SelectPlayerType].gameObject.GetComponentsInChildren<ParticleSystem>(); // 스킬 파티클들을 할당        
 
         // 직업별 스킬 UI 이미지 세팅
         skillCooldownBGImage.sprite = SkillSprites[(int)SelectPlayerType];
@@ -401,9 +403,9 @@ public class Player : MonoBehaviour
         {
             case PlayerType.FastMan:
                 // 이동 속도 증가 초기화
-                anim.SetFloat("SkillSpeed", 1.0f);
-                forwardSpeed /= SkillValue;
-                lateralSpeed /= SkillValue;
+                anim.SetFloat("SkillSpeed", SkillAnimeDefaultSpeed);
+                forwardSpeed /= SkillRunSpeed;
+                lateralSpeed /= SkillRunSpeed;
                 break;
             case PlayerType.ShildMan:
                 // 무적 상태 초기화
@@ -414,7 +416,7 @@ public class Player : MonoBehaviour
             case PlayerType.ZeroGravityMan:
                 // 무중력 상태 초기화
                 rb.mass = 1f;
-                anim.SetFloat("SkillGravityValue", 1f);
+                anim.SetFloat("SkillGravityValue", SkillAnimeDefaultSpeed);
                 break;
         }
     }
@@ -499,9 +501,9 @@ public class Player : MonoBehaviour
             {
                 case PlayerType.FastMan:
                     // 이동 속도 증가
-                    anim.SetFloat("SkillSpeed", SkillValue);
-                    forwardSpeed *= SkillValue;
-                    lateralSpeed *= SkillValue;
+                    anim.SetFloat("SkillSpeed", SkillRunSpeed);
+                    forwardSpeed *= SkillRunSpeed;
+                    lateralSpeed *= SkillRunSpeed;
                     break;
                 case PlayerType.ShildMan:
                     // 무적 상태
@@ -511,7 +513,7 @@ public class Player : MonoBehaviour
                 case PlayerType.ZeroGravityMan:
                     // 무중력 상태
                     rb.mass = 0.26f;
-                    anim.SetFloat("SkillGravityValue", 0.25f);
+                    anim.SetFloat("SkillGravityValue", SkillJumpSpeed);
                     break;
             }
 
